@@ -1,0 +1,4 @@
+include ':method_plugin'
+include ':method_lib'
+include ':app'
+rootProject.name = "ASM_Demo"

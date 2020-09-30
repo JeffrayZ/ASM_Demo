@@ -1,0 +1,33 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:4.0.1'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    google()
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址:当前工程下
+            repository(url: uri('./my-plugin'))
+            pom.groupId = 'com.test.asm.build'
+            pom.artifactId = 'test-asm'
+            pom.version = '1.0.0'
+        }
+    }
+}
